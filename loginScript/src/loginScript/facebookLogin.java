@@ -13,6 +13,7 @@ public class facebookLogin {
 
 	public static void main(String[] args) throws IOException, InterruptedException 
 	{
+
 		FileReader freader=new FileReader("exampleUserPassComb.txt"); 
 	    BufferedReader br=new BufferedReader(freader);
 	    String userPassLine =  null;
@@ -23,10 +24,11 @@ public class facebookLogin {
 	      Username and Password
 	     */
 	    
-	  //create firefox driver
-		WebDriver driver = new FirefoxDriver();
-		//Thread.sleep(2000);
 	    
+	    //create firefox driver
+	    WebDriver driver = new FirefoxDriver();
+	    
+	    //Get Ready to Input given Username and Password Combinations
 	    while((userPassLine = br.readLine()) != null)
 	    {
 	    	String delims = "[ ]+";
@@ -34,27 +36,22 @@ public class facebookLogin {
 			
 			//open facebook homepage
 			driver.get("http://www.facebook.com");
-			//Thread.sleep(2000);
 			
 			//Find Username field and enter username
 			driver.findElement(By.id("email")).clear();
 			driver.findElement(By.id("email")).sendKeys(userPassArray[0]);
-			//Thread.sleep(2000);
 			
 			//Find Password field and enter password
 			driver.findElement(By.id("pass")).clear();
 			driver.findElement(By.id("pass")).sendKeys(userPassArray[1]);
-			//Thread.sleep(2000);
 			
 			//Find LogIn Button and click on it
 			driver.findElement(By.id("u_0_o")).click();
-			//Thread.sleep(2000);
 	    }
 	    br.close();
-	  //Close the Driver Window
-		driver.close();
+	    //Close the Driver Window
+	    driver.close();
 	    
 	}
-
 	
 }
